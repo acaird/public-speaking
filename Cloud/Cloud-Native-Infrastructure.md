@@ -1,7 +1,5 @@
 # Cloud Native Infrastructure
 
-A deep dive into
-
 ## Abstract
 
 In this talk we will look at the state of Cloud Native Infrastructure as it stands today.
