@@ -1,7 +1,7 @@
 # Public Speaking
 
 ### Kris Nova
-gi
+
  - [kris@nivenly.com](mailto:kris@nivenly.com)
 
 A collection of CFP and abstracts for technical public speaking.
