@@ -1,4 +1,4 @@
-# Cloud Native Infrastructure
+# Cloud Native Infrastructure - Achieving a type 1 civilization
 
 ## Abstract
 
@@ -88,7 +88,7 @@ Infrastructure as code now means so much more than it ever has in the past.
 We desparetly need to free ourselves mentally from the old paradigms of developing software ON infrastructure.
 We need to begin developing our software WITH infrastructure.
 
-According to Dr. Kakua of MIT there are many types of potential civilization milestones a civilization can achieve.
+According to Dr. Kaku of MIT there are many types of potential civilization milestones a civilization can achieve.
 The human race is slowly approaching a Type 1 civilization, but is at risk of failure.
 
 It is commonly believed that the crux of achieving a type 1 civilization can ultimately be the breaking point for a species' evolution.
