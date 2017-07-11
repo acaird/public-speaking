@@ -4,7 +4,7 @@
 
 In this talk we will look at the state of Cloud Native Infrastructure as it stands today.
 We will explore lessons learned in the DevOps discipline over the past decade that ultimately led us to where we are now.
-We explore concrete similarities and differences between traditional infrastructure and cloud infrastructure, and dicuss the value that hosting in the cloud can offer, as well as warn about the dangers.
+We explore concrete similarities and differences between traditional infrastructure and cloud infrastructure, and discuss the value that hosting in the cloud can offer, as well as warn about the dangers.
 We will deep dive into coding patterns that help bring this new philosophy into existence.
 Upon conclusion we will understand how we are not replacing humans with automation tooling, but rather opening exciting new doors for projects to help us achieve beautiful and powerful infrastructure.
 
