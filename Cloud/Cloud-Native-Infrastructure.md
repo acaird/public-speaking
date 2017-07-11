@@ -3,10 +3,10 @@
 ## Abstract
 
 In this talk we will look at the state of Cloud Native Infrastructure as it stands today.
-We will explore lessons learned in the DevOps discipline over the past decade that ultimately lead us to wear we are now.
+We will explore lessons learned in the DevOps discipline over the past decade that ultimately led us to where we are now.
 We explore concrete similarities and differences between traditional infrastructure and cloud infrastructure, and dicuss the value that hosting in the cloud can offer, as well as warn about the dangers.
-We will deep dive into coding patterns that helo bring this new philosophy into existence.
-Upon conclusion we will understand how we are not replacing humans with automation tooling, but rather opening exciting new doors for projects to help us achieve beautiful and powerful infrastructure
+We will deep dive into coding patterns that help bring this new philosophy into existence.
+Upon conclusion we will understand how we are not replacing humans with automation tooling, but rather opening exciting new doors for projects to help us achieve beautiful and powerful infrastructure.
 
 ## What is Cloud Native
 
@@ -25,7 +25,7 @@ Crossing the bridge meant clearly defining one or more of these "environments", 
 Cloud native infrastrucutre completely liberates itself from these old paradigms.
 The infrastructure layers now are represented by software.
 Good software offers powerful opinions, this is ultimately any software's true value.
-The software that represents Cloud Native Infrastructure offers opinions, and helps to manage virtual hardware.
+The software that represents Cloud Native Infrastructure offers opinions and helps to manage virtual hardware.
 
 Which means we now are developing applications in possibly the most exciting point in the history of technological evolution.
 The infrastructure that used to govern our application development is now falling by the wayside.
@@ -37,8 +37,8 @@ Infrastructure that we can now treat as software has and will continue to change
 
 Throughout history software engineers have developed brialliant patterns for abstracting complex ideas into code.
 Now that infrastructure can be represented as software, we are watching the pattern of mapping the complex ideas of infrastructure into elegant software patterns.
-Perhaps the most notable pattern is the reconciliation and controll loops found in Kubernetes core components.
-This pattern has it's origin in advanced robotics, and has been battle tested over time to demonstrate stability.
+Perhaps the most notable pattern is the reconciliation and control loops found in Kubernetes core components.
+This pattern has its origin in advanced robotics, and has been battle tested over time to demonstrate stability.
 
 The pattern is quite simple, yet extremely powerful.
 The pattern is defined by 2 sub components, the intended state, and a control loop that will audit the intended state.
@@ -72,10 +72,10 @@ The infrastructure layer, that at one time was physically separated from the sof
 This creates a unique environment where applications can now manage and control their own infrastructure as needed.
 This beautiful new masterwork of infrastructure as software, and software running in the same layers is what Cloud Native means to me.
 
-The infrastructure does not care about what the software does, or advertises to do.
+The infrastructure does not care about what the software does or what it advertises to do.
 The software does not care about how the infrastructure layers control what they control.
 
-Thus, creating a harmonious environment where both infrastructure and application software can live side by side, in a mutally exclusive relationship.
+Thus, creating a harmonious environment where both infrastructure and application software can live side by side in a mutally exclusive relationship.
 
 On that note, the software layers of the system haven't changed drastically at all.
 DNS is still DNS, networking is still networking, and servers are still servers.
@@ -85,7 +85,7 @@ So adopting and moving an application to the cloud is fundamentally no different
 ## Conclusion
 
 Infrastructure as code now means so much more than it ever has in the past.
-We desparetly need to free ourselves mentally from the old paradigms of developing software ON infrastructure.
+We desperately need to free ourselves mentally from the old paradigms of developing software ON infrastructure.
 We need to begin developing our software WITH infrastructure.
 
 According to Dr. Kaku of MIT there are many types of potential civilization milestones a civilization can achieve.
