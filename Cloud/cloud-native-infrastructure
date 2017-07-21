@@ -1,0 +1,13 @@
+# Cloud Native Infrastructure
+
+By digging into succesful design patterns in many modern day cloud native applications we can begin to imagine a world where we take the next step into infrastructure as well.
+Imagine a world where the paradigms we are seeing that run and orchestrate cloud native applications, begin to run and orchestrate our infrastructure as well.
+In this talk we will explore the evolution of infrastructure management for humans over time.
+We begin by discussing the first step of primitive automation by running selective scripts on infrastructure to provision it.
+We then begin looking into infrastructure as code tooling such as terraform, or ansible. 
+We take the leap into API centric infrastructure that we have seen in Kubernetes kops.
+Then finally we paint a picture of "tomorrows" infrastructure using tools like kubicorn that are designed around a reconciliation enforcement model and intended to run as a control loop or operator pattern thus enforces infrastructure over time.
+
+We explore the software behind the tools, and how the Go programming languages has made these leaps in infrastructure maturity possible. 
+We also share the woes, and painful lessons learned along the way.
+The user will walk away from the talk feeling excited about cloud native infrastructure, and hopefuly considering switching their own infrastructure management proccess over to the new paradigms presented in the speech.
