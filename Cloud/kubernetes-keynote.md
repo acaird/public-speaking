@@ -15,8 +15,6 @@ The audience will walk away feeling inspired to use Kubernetes, and feel trust i
 
 # Why is the API is important?
 
-# What can you do with Kubernetes?
-
 # What is Microsoft doing with Kubernetes? 
 
 ### ACS
@@ -28,6 +26,18 @@ The audience will walk away feeling inspired to use Kubernetes, and feel trust i
 ### ACI + AKS
 
 # What is the community doing with Kubernetes?
+
+# What can you do with Kubernetes?
+
+### Tools and Starter Material
+
+# Kubernetes Roadmap
+
+### Release in 1.8
+
+### Release Cadence
+
+### Stearing Committee
 
 # Overview and reminders
 
