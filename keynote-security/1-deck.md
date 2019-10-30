@@ -42,9 +42,7 @@ _How can I ensure that nothing can bypass our tooling?_
 
 _Smaller problem:_
 	How can I make a presentation from the command line...
-	...that references man pages and C...
-	*FUN*
-
+	...that references man pages and C...	*FUN*
 
 ---
 
@@ -77,23 +75,18 @@ _Demonstrate:_
 	 $ echo <pid> > <subsystem>/<limit>
 
 	 dr-xr-xr-x 7 root root  0 Oct 27 15:37 blkio
-	 lrwxrwxrwx 1 root root 11 Oct 27 15:37 cpu -> cpu,cpuacct
-	 lrwxrwxrwx 1 root root 11 Oct 27 15:37 cpuacct -> cpu,cpuacct
 	 dr-xr-xr-x 7 root root  0 Oct 27 15:37 cpu,cpuacct
 	 dr-xr-xr-x 3 root root  0 Oct 27 15:37 cpuset
 	 dr-xr-xr-x 7 root root  0 Oct 27 15:37 devices
 	 dr-xr-xr-x 3 root root  0 Oct 27 15:37 freezer
 	 dr-xr-xr-x 3 root root  0 Oct 27 15:37 hugetlb
 	 dr-xr-xr-x 7 root root  0 Oct 27 15:37 memory
-	 lrwxrwxrwx 1 root root 16 Oct 27 15:37 net_cls -> net_cls,net_prio
 	 dr-xr-xr-x 3 root root  0 Oct 27 15:37 net_cls,net_prio
-	 lrwxrwxrwx 1 root root 16 Oct 27 15:37 net_prio -> net_cls,net_prio
 	 dr-xr-xr-x 3 root root  0 Oct 27 15:37 perf_event
 	 dr-xr-xr-x 7 root root  0 Oct 27 15:37 pids
 	 dr-xr-xr-x 2 root root  0 Oct 27 15:37 rdma
 	 dr-xr-xr-x 7 root root  0 Oct 27 15:37 systemd
 	 dr-xr-xr-x 6 root root  0 Oct 27 15:37 unified
-
 
 ---
 
@@ -113,23 +106,29 @@ _Demonstrate:_
 	User      CLONE_NEWUSER   user_namespaces(7)    User and group IDs
 	UTS       CLONE_NEWUTS    uts_namespaces(7)     Hostname and NIS
 
-	
-	// -----------------------------------------------------------------------------
-	// clone() calls are used to create a new process with various namespaces
-	//
+---
+
+-> # clone(2)
+	clone creates a new child process, and can share parts of it's
+	execution context with this process.
+
+	container:
+		creating a process with clone(2) and managing with a cgroup
+
+---
+
+-> # clone(20) example <-
 	// /* Same Pid, Same Disk */
 	int pid = clone(fn, pchild_stack + (1024 * 1024), SIGCHLD, NULL);
 	//
 	// /* Different Pid, Same Disk */
-	//int pid = clone(fn, pchild_stack + (1024 * 1024), CLONE_NEWPID | SIGCHLD, NULL);
+	//int pid = clone(fn, pchild_stack + (1024 * 1024),
+	      CLONE_NEWPID | SIGCHLD, NULL);
 	//
 	// /* Different Pid, Different Disk */
-	//int pid = clone(fn, pchild_stack + (1024 * 1024), CLONE_NEWPID | CLONE_NEWNET |
-	      CLONE_NEWNS | SIGCHLD, NULL);
-	//
-	// -----------------------------------------------------------------------------
-
-
+	//int pid = clone(fn, pchild_stack + (1024 * 1024),
+	      CLONE_NEWPID | CLONE_NEWNET | CLONE_NEWNS | SIGCHLD, NULL);
+	      
 ---
 
 -> # Review <-
