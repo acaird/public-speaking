@@ -42,6 +42,9 @@ const (
 	// c is for comments or empty lines (they are parsed the same)
 	c ElementType = "/!"
 
+	// e is for code execution
+	ex ElementType = "$"
+
 	// tt is for Titles
 	tt ElementType = "title"
 
@@ -165,5 +168,18 @@ func (t *RElement) Label() ElementType {
 }
 
 func (t *RElement) RawString() string {
+	return t.rawLine
+}
+
+type EXElement struct {
+	label   ElementType
+	rawLine string
+}
+
+func (t *EXElement) Label() ElementType {
+	return t.label
+}
+
+func (t *EXElement) RawString() string {
 	return t.rawLine
 }

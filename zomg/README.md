@@ -2,17 +2,20 @@
 
 <p align="center"><img src="screenshot.png" width="800"></p>
 <p align="center"><b>A simple solution to presenting from the command line.</b></p>
-</p>
 
 zomg is a a small binary that parses an extremely simple markdown syntax to help you build really sweet presentations.
 
 It runs on the command line.
 
+zomg will work with any remote control slide device as the only input for zomg is any input from a keyboard.
+
+Press any key to advance one slide. Exit zomg by pressing keys until your slides are done.
+
 ## .zomg files
 
 With `zomg` you create a directory of `.zomg` files. These are parsed alphabetically so if you want to control the order of your slides you should label them like this:
 
-```
+```bash
 1-slide.zomg
 1.1-slide.zomg
 1.2-slide.zomg
@@ -25,7 +28,7 @@ WHATEVER.txt
 
 Run the presentation by pointing `zomg` to the directory that contains your `.zomg` files
 
-```
+```bash
 zomg ~/presentations/my-keynote/
 ```
 
@@ -47,7 +50,7 @@ zomg ~/presentations/my-keynote/
  
 ## Example .zomg file
 
-```
+```markdown
 
 ------------------------------------------------------------------------------------------------------------------------
 Feel free to type comments however you please in your slides. These are handy for speaker notes or just general context.
@@ -147,7 +150,7 @@ Feel free to open a PR and add a theme. Here are some examples of themes to give
 
 #### basic
 
-```
+```go
 package mdterm
 
 import "github.com/nsf/termbox-go"
@@ -165,7 +168,7 @@ func (t *ThemeBasic) AttrsByElement(e Element) (termbox.Attribute, termbox.Attri
 
 #### nova
 
-```
+```go
 package mdterm
 
 import "github.com/nsf/termbox-go"

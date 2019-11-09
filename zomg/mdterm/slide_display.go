@@ -17,6 +17,9 @@ package mdterm
 
 import (
 	"fmt"
+	"os"
+	"os/exec"
+	"strings"
 
 	"github.com/kris-nova/logger"
 
@@ -58,6 +61,37 @@ func (r *RenderedSlide) DisplayWithOptions(opt *DisplayOptions) error {
 			err := r.DisplayAlignedMessage(e, i, highestLen)
 			if err != nil {
 				return fmt.Errorf("failed to display slide: %v", err)
+			}
+			break
+		case ex:
+			// Execute a command
+			execStr := e.RawString()
+			logger.Info("exec: %s", execStr)
+			execSlc := strings.Split(execStr, " ")
+			cmd := exec.Command(execSlc[0], execSlc[1:]...)
+			cmd.Stdin = os.Stdin
+			out, err := cmd.Output()
+			if err != nil {
+				return fmt.Errorf("unable to execute command %s %s: %v", execStr[0], execStr[1:], err)
+			}
+			err = r.DisplayAlignedMessage(e, i, highestLen)
+			if err != nil {
+				return fmt.Errorf("failed to display slide: %v", err)
+			}
+			// Execute command
+			outSlc := strings.Split(string(out), "\n")
+			// This is dangerous and could break the program
+			for _, line := range outSlc {
+				i++
+				// Todo the output will need formatting and a count as well - just using this for now
+				eee := &EXElement{
+					rawLine: line,
+					label:   ex,
+				}
+				err := r.DisplayAlignedMessage(eee, i, highestLen)
+				if err != nil {
+					return fmt.Errorf("failed to display slide: %v", err)
+				}
 			}
 			break
 		case ll:

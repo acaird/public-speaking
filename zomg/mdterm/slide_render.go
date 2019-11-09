@@ -95,6 +95,14 @@ func RenderSlide(slide *Slide) (*RenderedSlide, error) {
 			}
 			r.elements = append(r.elements, e)
 		}
+		// x  ----------------------------------------------------------------------------------------------------------
+		if strings.HasPrefix(line, string(ex)) {
+			e := &EXElement{
+				label:   ex,
+				rawLine: strings.TrimPrefix(line, string(ex)),
+			}
+			r.elements = append(r.elements, e)
+		}
 		// c  ----------------------------------------------------------------------------------------------------------
 		if strings.HasPrefix(line, string(c)) {
 			e := &NLElement{
