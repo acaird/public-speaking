@@ -1,5 +1,5 @@
 /*
-Copyright © 2019 NAME HERE <EMAIL ADDRESS>
+Copyright © 2019 Kris Nova <kris@nivenly.com> 2019
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@ limitations under the License.
 */
 package main
 
-import "github.com/kris-nova/public-speaking/gomd/cmd"
+import "github.com/kris-nova/public-speaking/zomg/cmd"
 
 func main() {
-  cmd.Execute()
+	cmd.Execute()
 }

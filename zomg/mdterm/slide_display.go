@@ -1,3 +1,18 @@
+/*
+Copyright © 2019 Kris Nova <kris@nivenly.com> 2019
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 package mdterm
 
 import (
@@ -31,16 +46,39 @@ func (r *RenderedSlide) DisplayWithOptions(opt *DisplayOptions) error {
 			highestLen = l
 		}
 	}
+	r.elements = append(r.elements, r.slide.presentation.title)
+	r.elements = append(r.elements, r.slide.presentation.author)
+	r.elements = append(r.elements, r.slide.presentation.meta)
 
 	for i, e := range r.elements {
 		// T's are center aligned
 		// nl's are centered but aligned
-		if e.Label() == nl {
+		switch e.Label() {
+		case nl:
 			err := r.DisplayAlignedMessage(e, i, highestLen)
 			if err != nil {
 				return fmt.Errorf("failed to display slide: %v", err)
 			}
-		} else {
+			break
+		case ll:
+			err := r.DisplayLeftAlignedMessage(e, r.maxx-1)
+			if err != nil {
+				return fmt.Errorf("failed to display slide: %v", err)
+			}
+			break
+		case rr:
+			err := r.DisplayRightAlignedMessage(e, r.maxx-1)
+			if err != nil {
+				return fmt.Errorf("failed to display slide: %v", err)
+			}
+			break
+		case tt:
+			err := r.DisplayCenteredMessage(e, -1)
+			if err != nil {
+				return fmt.Errorf("failed to display slide: %v", err)
+			}
+			break
+		default:
 			err := r.DisplayCenteredMessage(e, i)
 			if err != nil {
 				return fmt.Errorf("failed to display slide: %v", err)
@@ -70,7 +108,7 @@ func (r *RenderedSlide) DisplayAlignedMessage(e Element, lnum, longestMsg int) e
 	yStart := yEmpty/2 + ((yEmpty % 2) / 2)
 	// Vertical Axis
 	totalVertI := len(r.elements)
-	xEmpty := r.maxx - totalVertI
+	xEmpty := r.maxx - totalVertI - 2 // Reserve 2 lines for the title and author lines
 	if xEmpty < 0 {
 		return fmt.Errorf("slide %s too many vertical lines (%d) max lines (%d)", r.slide.name, (xEmpty * -1), totalVertI)
 	}
@@ -96,18 +134,46 @@ func (r *RenderedSlide) DisplayCenteredMessage(e Element, lnum int) error {
 	if yEmpty < 0 {
 		return fmt.Errorf("slide %s too many horizontal chars (%d) max chars (%d)", r.slide.name, (yEmpty * -1), totalLineI)
 	}
-	yStart := yEmpty/2 + ((yEmpty % 2) / 2)
+	yStart := yEmpty/2 + (yEmpty % 2)
 	// Vertical Axis
-	totalVertI := len(r.elements)
-	xEmpty := r.maxx - totalVertI
-	if xEmpty < 0 {
-		return fmt.Errorf("slide %s too many vertical lines (%d) max lines (%d)", r.slide.name, (xEmpty * -1), totalVertI)
+	xStart := 0
+	if lnum == -1 {
+		xStart = 1
+	} else {
+		totalVertI := len(r.elements)
+		xEmpty := r.maxx - totalVertI - 2 // Reserve 2 lines
+		if xEmpty < 0 {
+			return fmt.Errorf("slide %s too many vertical lines (%d) max lines (%d)", r.slide.name, (xEmpty * -1), totalVertI)
+		}
+		xStart = xEmpty/2 + (xEmpty % 2)
 	}
-	xStart := xEmpty/2 + (xEmpty % 2)
 	theme := r.slide.presentation.theme
 	a1, a2 := theme.AttrsByElement(e)
 	for i, r := range msg {
 		termbox.SetCell(i+yStart, lnum+xStart, r, a1, a2)
+	}
+	return nil
+}
+
+func (r *RenderedSlide) DisplayLeftAlignedMessage(e Element, lnum int) error {
+	// Time for some arithmetic!
+	msg := e.RawString()
+	theme := r.slide.presentation.theme
+	a1, a2 := theme.AttrsByElement(e)
+	for i, r := range msg {
+		termbox.SetCell(i, lnum, r, a1, a2)
+	}
+	return nil
+}
+
+func (r *RenderedSlide) DisplayRightAlignedMessage(e Element, lnum int) error {
+	// Time for some arithmetic!
+	msg := e.RawString()
+	theme := r.slide.presentation.theme
+	yStart := r.maxy - len(msg)
+	a1, a2 := theme.AttrsByElement(e)
+	for i, r := range msg {
+		termbox.SetCell(i+yStart, lnum, r, a1, a2)
 	}
 	return nil
 }

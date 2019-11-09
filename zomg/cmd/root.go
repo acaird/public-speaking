@@ -1,5 +1,5 @@
 /*
-Copyright © 2019 NAME HERE <EMAIL ADDRESS>
+Copyright © 2019 Kris Nova <kris@nivenly.com> 2019
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,25 +19,27 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/kris-nova/public-speaking/gomd/mdterm"
+	"github.com/kris-nova/public-speaking/zomg/mdterm"
 
 	"github.com/kris-nova/logger"
 	"github.com/spf13/cobra"
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "gomd",
+	Use:   "zomg",
 	Short: "Play markdown files in your terminal",
 	Long: `
-
+zomg <directory-of-zomg-files> <zomg-flags>
+Example: zomg ~/meeps/myslides --theme basic
 `,
+
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) != 1 {
-			logger.Critical("Invalid directory. Usuage: gomd <presentation-directory> <flags>")
+			logger.Critical("Invalid directory. Usage: zomg <presentation-directory> <flags>")
 			os.Exit(-2)
 		}
 		o.dirToParse = args[0]
-		err := RunGoMD(o)
+		err := RunZOMG(o)
 		if err != nil {
 			logger.Critical("Failure: %v", err)
 			os.Exit(-1)
@@ -46,7 +48,7 @@ var rootCmd = &cobra.Command{
 	},
 }
 
-type GoMDOptions struct {
+type ZOMGOptions struct {
 	dirToParse string
 	themeName  string
 	theme      mdterm.Theme
@@ -54,9 +56,7 @@ type GoMDOptions struct {
 }
 
 var (
-	o = &GoMDOptions{}
-	// TODO this is where we define the themes
-	// We should echo the info out if a user calls -h or --help
+	o        = &ZOMGOptions{}
 	themeMap = map[string]struct {
 		info       string
 		cthemeName mdterm.ThemeName
@@ -66,6 +66,11 @@ var (
 			info:       "The default theme, specifically designed for Kris Nova's archlinux laptop.",
 			cthemeName: mdterm.NovaTheme,
 			theme:      &mdterm.ThemeNova{},
+		},
+		"basic": {
+			info:       "A basic theme, that does no coloring and using your terminals default settings.",
+			cthemeName: mdterm.BasicTheme,
+			theme:      &mdterm.ThemeBasic{},
 		},
 	}
 )
@@ -83,9 +88,29 @@ func init() {
 	rootCmd.Flags().IntVarP(&logger.Level, "verbosity", "v", 4, "Verbosity between 0 (off) to 4 (everything)")
 	rootCmd.Flags().StringVarP(&o.themeName, "theme-name", "t", "nova", "The theme to use")
 
+	// ---- Fix Help
+	themeStr := "Possible themes:\n\n"
+	for n, m := range themeMap {
+		newStr := fmt.Sprintf("%s:\n", n)
+		newStr = fmt.Sprintf("%s%s\n\n", newStr, m.info)
+		themeStr = fmt.Sprintf("%s%s", themeStr, newStr)
+	}
+	rootCmd.SetHelpTemplate(fmt.Sprintf(`{{with (or .Long .Short)}}{{. | trimTrailingWhitespaces}}
+
+{{end}}{{if or .Runnable .HasSubCommands}}{{.UsageString}}{{end}}
+
+%s
+
+Author: Kris Nova <kris@nivenly.com>
+
+Bugs: github.com/kris-nova/public-speaking
+
+
+`, themeStr))
 }
 
-func RunGoMD(o *GoMDOptions) error {
+// RunZOMG is the main entry point of the program
+func RunZOMG(o *ZOMGOptions) error {
 	// Process theme
 	found := false
 	for ii, tmap := range themeMap {
