@@ -1,6 +1,6 @@
 # zomg
 
-<p align="center"><img src="screenshot.png" width="480"></p>
+<p align="center"><img src="screenshot.png" width="800"></p>
 <p align="center"><b>A simple solution to presenting from the command line.</b></p>
 </p>
 
@@ -32,14 +32,19 @@ zomg ~/presentations/my-keynote/
 ## .zomg syntax
 
 `#` Title
+
 `##` Heading 1
+
 `###` Heading 2
+
 `####` Heading 3 / Paragraph 
+
 `//` Code block aligned in sections 
+
 `/!` New line in the slide 
+
 `Comments have no syntax` Just type wherever you like
  
-
 ## Example .zomg file
 
 ```
