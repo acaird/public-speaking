@@ -13,6 +13,8 @@ const (
 	t2 ElementType = "## "
 	t3 ElementType = "### "
 	t4 ElementType = "#### "
+	nl ElementType = "//"
+	c  ElementType = "/!"
 )
 
 type T1Element struct {
@@ -63,5 +65,31 @@ func (t *T4Element) Label() ElementType {
 }
 
 func (t *T4Element) RawString() string {
+	return t.rawLine
+}
+
+type NLElement struct {
+	label   ElementType
+	rawLine string
+}
+
+func (t *NLElement) Label() ElementType {
+	return t.label
+}
+
+func (t *NLElement) RawString() string {
+	return t.rawLine
+}
+
+type CElement struct {
+	label   ElementType
+	rawLine string
+}
+
+func (t *CElement) Label() ElementType {
+	return t.label
+}
+
+func (t *CElement) RawString() string {
 	return t.rawLine
 }
