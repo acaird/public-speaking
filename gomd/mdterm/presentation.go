@@ -11,12 +11,14 @@ import (
 type Presentation struct {
 	filepath       string
 	slides         []*Slide
+	theme          Theme
 	renderedSlides []*RenderedSlide
 }
 
 type Slide struct {
-	name    string
-	content []byte
+	name         string
+	content      []byte
+	presentation *Presentation
 }
 
 func LoadPresentation(dir string) (*Presentation, error) {
@@ -24,7 +26,6 @@ func LoadPresentation(dir string) (*Presentation, error) {
 	if err != nil {
 		return nil, fmt.Errorf("unable to abs() dir: %v", dir)
 	}
-
 	files, err := ioutil.ReadDir(dir)
 	if err != nil {
 		return nil, fmt.Errorf("unable to parse dir (%s): %v", dir, err)
@@ -41,26 +42,35 @@ func LoadPresentation(dir string) (*Presentation, error) {
 		if err != nil {
 			logger.Info("error parsing file: %v", err)
 		}
-
 		s := &Slide{
-			name:    f.Name(),
-			content: data,
+			name:         f.Name(),
+			content:      data,
+			presentation: p,
 		}
 		p.slides = append(p.slides, s)
 	}
 	return p, nil
 }
 
-func (p *Presentation) Run() error {
-	logger.Info("parsing %d slides", len(p.slides))
+func (p *Presentation) SetTheme(theme Theme) error {
+	p.theme = theme
+	return nil
+}
+
+func (p *Presentation) RenderPresentation() error {
+	logger.Info("rendering %d slides", len(p.slides))
 	for _, slide := range p.slides {
 		pslide, err := RenderSlide(slide)
 		if err != nil {
-			return fmt.Errorf("unable to parse slide %s: %v", slide.name, err)
+			return fmt.Errorf("unable to render slide %s: %v", slide.name, err)
 		}
 		p.renderedSlides = append(p.renderedSlides, pslide)
 	}
-	logger.Info("rendering slides")
+	return nil
+}
+
+func (p *Presentation) DisplayPresentation() error {
+	logger.Info("displaying slides")
 	for _, rslide := range p.renderedSlides {
 		err := rslide.DisplayWithOptions(&DisplayOptions{})
 		if err != nil {

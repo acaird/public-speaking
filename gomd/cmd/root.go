@@ -48,10 +48,27 @@ var rootCmd = &cobra.Command{
 
 type GoMDOptions struct {
 	dirToParse string
+	themeName  string
+	theme      mdterm.Theme
 	verbosity  int
 }
 
-var o = &GoMDOptions{}
+var (
+	o = &GoMDOptions{}
+	// TODO this is where we define the themes
+	// We should echo the info out if a user calls -h or --help
+	themeMap = map[string]struct {
+		info       string
+		cthemeName mdterm.ThemeName
+		theme      mdterm.Theme
+	}{
+		"nova": {
+			info:       "The default theme, specifically designed for Kris Nova's archlinux laptop.",
+			cthemeName: mdterm.NovaTheme,
+			theme:      &mdterm.ThemeNova{},
+		},
+	}
+)
 
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
@@ -64,12 +81,39 @@ func Execute() {
 
 func init() {
 	rootCmd.Flags().IntVarP(&logger.Level, "verbosity", "v", 4, "Verbosity between 0 (off) to 4 (everything)")
+	rootCmd.Flags().StringVarP(&o.themeName, "theme-name", "t", "nova", "The theme to use")
+
 }
 
 func RunGoMD(o *GoMDOptions) error {
+	// Process theme
+	found := false
+	for ii, tmap := range themeMap {
+		if ii == o.themeName {
+			o.theme = tmap.theme
+			found = true
+		}
+	}
+	if !found {
+		// Default to Nova
+		o.theme = &mdterm.ThemeNova{}
+	}
+	// Init the presentation
 	p, err := mdterm.LoadPresentation(o.dirToParse)
 	if err != nil {
-		return fmt.Errorf("unable to load deck: %v", err)
+		return fmt.Errorf("unable to load presentation: %v", err)
 	}
-	return p.Run()
+	p.SetTheme(o.theme)
+
+	// Render is what reasons about the slide data
+	err = p.RenderPresentation()
+	if err != nil {
+		return fmt.Errorf("unable to process presentation: %v", err)
+	}
+	// Display will actually write the processed information to the TTY buffer
+	err = p.DisplayPresentation()
+	if err != nil {
+		return fmt.Errorf("unable to display presentation: %v", err)
+	}
+	return nil
 }
