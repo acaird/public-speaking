@@ -30,7 +30,7 @@ func (t *ThemeNova) AttrsByElement(e Element) (termbox.Attribute, termbox.Attrib
 		return termbox.ColorGreen | termbox.AttrBold, termbox.ColorDefault
 	case t3:
 		return termbox.ColorGreen, termbox.ColorDefault
-	case nl:
+	case nl, ex:
 		return termbox.ColorGreen | termbox.AttrBold, termbox.ColorWhite
 	case ll, tt, rr:
 		return termbox.ColorBlue | termbox.AttrBold, termbox.ColorDefault

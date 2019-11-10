@@ -42,8 +42,8 @@ const (
 	// c is for comments or empty lines (they are parsed the same)
 	c ElementType = "/!"
 
-	// e is for code execution
-	ex ElementType = "$"
+	// ex is for code execution
+	ex ElementType = "$ "
 
 	// tt is for Titles
 	tt ElementType = "title"

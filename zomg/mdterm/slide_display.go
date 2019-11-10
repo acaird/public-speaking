@@ -78,7 +78,6 @@ func (r *RenderedSlide) DisplayWithOptions(opt *DisplayOptions) error {
 			if err != nil {
 				return fmt.Errorf("failed to display slide: %v", err)
 			}
-			// Execute command
 			outSlc := strings.Split(string(out), "\n")
 			// This is dangerous and could break the program
 			for _, line := range outSlc {

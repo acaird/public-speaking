@@ -13,16 +13,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-# This is about me
-
-## I am pretty ok
-
-### twitter.com/kris-nova
-
-### kris@nivenly.com
+# df -h
+/!
 
 ------------------------------------------------------------------------------------------------------------------------
 So this is super dangerous and if you aren't careful this could break your deck
 Basically we just assume you are smart enough to execute a command that will not have a lot of standard out
 It is suggested to put these at the bottom of a slide and leave plenty of room for output
-$ whoami
+// ---------------------------------------------------------------------
+$ df -h
+/!
