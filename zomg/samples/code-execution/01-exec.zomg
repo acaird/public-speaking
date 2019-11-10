@@ -20,6 +20,6 @@ limitations under the License.
 So this is super dangerous and if you aren't careful this could break your deck
 Basically we just assume you are smart enough to execute a command that will not have a lot of standard out
 It is suggested to put these at the bottom of a slide and leave plenty of room for output
-// ---------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------------------
 $ df -h
 /!
