@@ -13,14 +13,28 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-# df -h
-/!
+
+
+
+
 
 ------------------------------------------------------------------------------------------------------------------------
-So this is super dangerous and if you aren't careful this could break your deck
-Basically we just assume you are smart enough to execute a command that will not have a lot of standard out
-It is suggested to put these at the bottom of a slide and leave plenty of room for output
+Here is probably the best way to execute a command right now:
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+# free -h
+### This is probably the best way to execute a command
+### We want to make this better later, but we have a lot to consider with a TTY
+### Also we need to figure out what to do with syntax
+### ...oh and also STDOUT vs STDERR
+### ...or even STDIN for that matter...
+/!
 // ---------------------------------------------------------------------------------------------------------------------
-$ df -h
+$ free -h
 /!
 
