@@ -65,7 +65,7 @@ func (r *RenderedSlide) DisplayWithOptions(opt *DisplayOptions) error {
 			break
 		case ex:
 			// Execute a command
-			execStr := e.RawString()
+			execStr := strings.Trim(e.RawString(), " ")
 			logger.Info("exec: %s", execStr)
 			execSlc := strings.Split(execStr, " ")
 			cmd := exec.Command(execSlc[0], execSlc[1:]...)
