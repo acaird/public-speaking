@@ -6,7 +6,7 @@ Main Takeaway: What is and isn't runtime security
 ------------------------------------------------------------------------------------------------------------------------
 
 
-# What runtime security IS NOT
+### What runtime security IS NOT
 /!
 // - Prevention
 //   - Runtime security does not attempt to prevent any malicious activity, or block malicious activity
@@ -24,7 +24,7 @@ Main Takeaway: What is and isn't runtime security
 /!
 
 
-# What runtime security IS
+### What runtime security IS
 /!
 // - Anomaly detection
 //   - Something unexpected or suspicious happened, let's alert

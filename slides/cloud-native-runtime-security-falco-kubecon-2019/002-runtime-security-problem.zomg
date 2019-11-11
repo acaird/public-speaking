@@ -6,23 +6,26 @@ Main takeaway: understanding the problem, and concerns with existing approaches
 
 # The problem
 /!
-## Securing a system in full, without risking breaking the system
+### Securing a system in full, without risking breaking the system
 /!
-## In order to secure a system, we need to observe a system
+### In order to secure a system, we need to observe a system
 /!
-## Other approaches and why they didn't work for us
+### Common approaches to system tracing
 /!
 // - LD_PRELOAD
 //   - Dependency on glibc
 //   - Fundamentally changes your app, in possibly unknown ways
+//
 // - Sidecars
 //   - Running with shared storage and shared network
 //   - Constrained to the environment of the original pod
 //   - Must be deployed, and managed for every application
+//
 // - Kernel Modules
 //   - Getting close to total system visibility
 //   - Could potentially crash a kernel
 //   - Just like LD_PRELOAD but requires even more invasive 3rd party code
 /!
-## So how do we see the entire system without risking these concerns?
+/!
+#### So how do we see the entire system without risking these concerns?
 /!
