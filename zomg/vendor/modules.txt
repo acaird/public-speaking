@@ -1,0 +1,22 @@
+# github.com/fatih/color v1.7.0
+github.com/fatih/color
+# github.com/inconshreveable/mousetrap v1.0.0
+github.com/inconshreveable/mousetrap
+# github.com/kris-nova/logger v0.0.0-20181127235838-fd0d87064b06
+github.com/kris-nova/logger
+# github.com/kris-nova/lolgopher v0.0.0-20180921204813-313b3abb0d9b
+github.com/kris-nova/lolgopher
+# github.com/mattn/go-colorable v0.1.4
+github.com/mattn/go-colorable
+# github.com/mattn/go-isatty v0.0.10
+github.com/mattn/go-isatty
+# github.com/mattn/go-runewidth v0.0.6
+github.com/mattn/go-runewidth
+# github.com/nsf/termbox-go v0.0.0-20190817171036-93860e161317
+github.com/nsf/termbox-go
+# github.com/spf13/cobra v0.0.5
+github.com/spf13/cobra
+# github.com/spf13/pflag v1.0.3
+github.com/spf13/pflag
+# golang.org/x/sys v0.0.0-20191008105621-543471e840be
+golang.org/x/sys/unix

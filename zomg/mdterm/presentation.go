@@ -56,7 +56,7 @@ func LoadPresentation(dir string) (*Presentation, error) {
 	}
 	p := &Presentation{}
 	logger.Info("number of files in (%s): %d", dir, len(files))
-	if len(files) <= 1 {
+	if len(files) < 1 {
 		return nil, fmt.Errorf("unable to find enough files in (%s)", dir)
 	}
 	for _, f := range files {
