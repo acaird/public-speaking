@@ -148,7 +148,7 @@ func (r *RenderedSlide) DisplayAlignedMessage(e Element, lnum, longestMsg int) e
 	xStart := xEmpty/2 + (xEmpty % 2)
 	theme := r.slide.presentation.theme
 	a1, a2 := theme.AttrsByElement(e)
-	for i := 0; i < longestMsg; i++ {
+	for i := 0; i <= longestMsg; i++ {
 		for i, r := range msg {
 			termbox.SetCell(i+yStart, lnum+xStart, r, a1, a2)
 			i++
