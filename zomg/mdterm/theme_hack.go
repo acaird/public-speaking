@@ -17,23 +17,23 @@ package mdterm
 
 import "github.com/nsf/termbox-go"
 
-const NovaTheme ThemeName = "nova"
+const HackTheme ThemeName = "hack"
 
-type ThemeNova struct {
+type ThemeHack struct {
 }
 
-func (t *ThemeNova) AttrsByElement(e Element) (termbox.Attribute, termbox.Attribute) {
+func (t *ThemeHack) AttrsByElement(e Element) (termbox.Attribute, termbox.Attribute) {
 	switch e.Label() {
 	case t1:
-		return termbox.ColorGreen | termbox.AttrBold | termbox.AttrUnderline, termbox.ColorDefault
+		return termbox.ColorBlue | termbox.AttrBold | termbox.AttrUnderline, termbox.ColorDefault
 	case t2:
-		return termbox.ColorGreen | termbox.AttrBold, termbox.ColorDefault
+		return termbox.ColorGreen | termbox.AttrBold | termbox.AttrUnderline, termbox.ColorDefault
 	case t3:
-		return termbox.ColorGreen, termbox.ColorDefault
+		return termbox.ColorGreen | termbox.AttrBold, termbox.ColorDefault
 	case nl, ex:
-		return termbox.ColorGreen | termbox.AttrBold, termbox.ColorWhite
+		return termbox.ColorGreen, termbox.ColorDefault
 	case ll, tt, rr:
-		return termbox.ColorBlue | termbox.AttrBold, termbox.ColorDefault
+		return termbox.ColorYellow | termbox.AttrBold, termbox.ColorDefault
 	default:
 		return termbox.ColorDefault, termbox.ColorDefault
 	}

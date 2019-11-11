@@ -17,6 +17,7 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/fatih/color"
 	"os"
 
 	"github.com/kris-nova/public-speaking/zomg/mdterm"
@@ -34,9 +35,8 @@ Example: zomg ~/meeps/myslides --theme basic
 `,
 
 	Run: func(cmd *cobra.Command, args []string) {
-		if len(args) != 1 {
-			logger.Critical("Invalid directory. Usage: zomg <presentation-directory> <flags>")
-			os.Exit(-2)
+		if len(args) == 0 {
+			RunZOMG(o)
 		}
 		o.dirToParse = args[0]
 		err := RunZOMG(o)
@@ -67,6 +67,11 @@ var (
 			cthemeName: mdterm.NovaTheme,
 			theme:      &mdterm.ThemeNova{},
 		},
+		"hack": {
+			info:       "Theme designed for dark terminals",
+			cthemeName: mdterm.HackTheme,
+			theme:      &mdterm.ThemeHack{},
+		},
 		"basic": {
 			info:       "A basic theme, that does no coloring and using your terminals default settings.",
 			cthemeName: mdterm.BasicTheme,
@@ -88,29 +93,46 @@ func init() {
 	rootCmd.Flags().IntVarP(&logger.Level, "verbosity", "v", 4, "Verbosity between 0 (off) to 4 (everything)")
 	rootCmd.Flags().StringVarP(&o.themeName, "theme-name", "t", "nova", "The theme to use")
 
+	args := os.Args
+	if len(args) == 0 {
+		printHelp()
+	}
 	// ---- Fix Help
 	themeStr := "Possible themes:\n\n"
 	for n, m := range themeMap {
-		newStr := fmt.Sprintf("%s:\n", n)
+		newStr := fmt.Sprintf("%s:\n", color.BlueString(n))
 		newStr = fmt.Sprintf("%s%s\n\n", newStr, m.info)
 		themeStr = fmt.Sprintf("%s%s", themeStr, newStr)
 	}
-	rootCmd.SetHelpTemplate(fmt.Sprintf(`{{with (or .Long .Short)}}{{. | trimTrailingWhitespaces}}
+	rootCmd.SetHelpTemplate(fmt.Sprintf(`
+ _____   ____  __  _________
+/__  /  / __ \/  |/  / ____/
+  / /  / / / / /|_/ / / __  
+ / /__/ /_/ / /  / / /_/ /  
+/____/\____/_/  /_/\____/  Terminal Slides by Kris Nova 
 
+{{with (or .Long .Short)}}{{. | trimTrailingWhitespaces}}
 {{end}}{{if or .Runnable .HasSubCommands}}{{.UsageString}}{{end}}
 
 %s
 
-Author: Kris Nova <kris@nivenly.com>
-
-Bugs: github.com/kris-nova/public-speaking
-
-
+Author  : Kris Nova <kris@nivenly.com>
+Bugs    : github.com/kris-nova/public-speaking
 `, themeStr))
+}
+
+func printHelp() {
+	rootCmd.Help()
+	os.Exit(1)
 }
 
 // RunZOMG is the main entry point of the program
 func RunZOMG(o *ZOMGOptions) error {
+	if o.dirToParse == "" {
+		logger.Critical("Invalid directory. Usage: zomg <presentation-directory> <flags>")
+		logger.Critical("Run zomg -h / --help for more info")
+		os.Exit(1)
+	}
 	// Process theme
 	found := false
 	for ii, tmap := range themeMap {
