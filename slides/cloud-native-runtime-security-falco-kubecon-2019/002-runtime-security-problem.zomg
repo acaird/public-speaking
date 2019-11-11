@@ -1,10 +1,16 @@
+------------------------------------------------------------------------------------------------------------------------
+Nova
+
+Main takeaway: understanding the problem, and concerns with existing approaches
+------------------------------------------------------------------------------------------------------------------------
+
 # The problem
 /!
 ## Securing a system in full, without risking breaking the system
 /!
-#### In order to secure a system, we need to observe a system
+## In order to secure a system, we need to observe a system
 /!
-#### Other approaches and why they didn't work for us
+## Other approaches and why they didn't work for us
 /!
 // - LD_PRELOAD
 //   - Dependency on glibc
@@ -18,5 +24,5 @@
 //   - Could potentially crash a kernel
 //   - Just like LD_PRELOAD but requires even more invasive 3rd party code
 /!
-#### So how do we see the entire system without risking these concerns?
+## So how do we see the entire system without risking these concerns?
 /!

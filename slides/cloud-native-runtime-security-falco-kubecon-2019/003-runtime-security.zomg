@@ -1,0 +1,38 @@
+------------------------------------------------------------------------------------------------------------------------
+Nova
+
+
+Main Takeaway: What is and isn't runtime security
+------------------------------------------------------------------------------------------------------------------------
+
+
+# What runtime security IS NOT
+/!
+// - Prevention
+//   - Runtime security does not attempt to prevent any malicious activity, or block malicious activity
+// - Policy Enforcement
+//   - Policy enforcement describes what a user should and shouldn't do arbitrarily
+//   - Security concerns are about painting a picture after something bad has happened (detective work, forensics)
+// - Interception
+//   - Common policy and security enforcement tools attempt to intercept activity, and block or mutate it
+//   - Runtime security is like having a security system installed to paint a picture after an event
+// - A hook
+//   - A hook works by injecting arbitrary code or logic in addition to some sort event
+//   - Git commit hooks, Kops hooks,
+// - Magic
+//   - Any other form of unknown logic happening without you knowing about it
+/!
+
+
+# What runtime security IS
+/!
+// - Anomaly detection
+//   - Something unexpected or suspicious happened, let's alert
+// - Runtime observability
+//   - Surveillance system for an environment
+//   - Who, What, When, Where
+// - System wide forensics
+//   - The ability to tell a story, at the most fundamental level
+// - Alerting / Triggering
+//   - Now that we detected something, how can we make it easy to hook this up to other tooling
+/!
