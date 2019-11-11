@@ -3,22 +3,21 @@
 <p align="center"><img src="/img/nova-headshot.jpg" width="340"></p>
 <p align="center"><img src="/img/nova-boots.jpg" width="340"></p>
 
-These are the official pictures to use if you would like to include an image of me for a publication, or event. 
+ - These are the official pictures to use if you would like to include an image of me for a publication, or event. 
+ - These pictures are **NOT** free to use if you are including them in media without my consent. If you are unsure please [email me](mailto:kris@nivenly.com).
+ - These pictures are **NOT** free to use for any form of publication with consent from the author Peter Adams of [facesofopensource.com](http://facesofopensource.com/kris-nova/).
 
-These pictures are **NOT** free to use if you are including them in media without my consent. If you are unsure please [email me](mailto:kris@nivenly.com).
-These pictures are **NOT** free to use for any form of publication with consent from the author Peter Adams of [facesofopensource.com](http://facesofopensource.com/kris-nova/).
-
-# Request for me to speak at your event
+### Request for me to speak
 
 If you would like to have me attend your event, please familiarize yourself with this page (bookmark if needed) then file an issue in the [official issue tracker](https://github.com/kris-nova/public-speaking/issues). 
 
 We can ask questions there, and if I can make it we will ultimately need someone to make a small PR to this repository so we can begin tracking the event.
 
-## Biography 
+### Biography 
 
 > Kris Nova, Chief Open Source Advocate at Sysdig, focuses on security, intrusion detection, and the Linux kernel with Kubernetes and eBPF. As an active advocate for open source, Nova is an ambassador for the CNCF and the creator of kubicorn, a successful Kubernetes infrastructure management tool. Nova joins Sysdig from Heptio/VMWare, where she was a Senior Developer Advocate. Prior to VMWare, Nova was at Deis/Microsoft, where she was a developer advocate and an engineer on Kubernetes. Nova has a deep technical background in the Go programming language and has authored many successful open source tools in Go. Nova has organized many special interest groups in Kubernetes. She is a leader in the community. She understands the frustration with running cloud-native infrastructure via a distributed cloud-native application and authored an O’Reilly book on the topic, Cloud Native Infrastructure. Nova lives in Seattle and spends her free time climbing mountains.
 
-## FAQ
+### FAQ
 
 **Food preference**: 
 
@@ -41,23 +40,18 @@ I am very busy, and it sometimes takes me weeks to follow up with someone. A gen
 Please do not send multiple email threads about the same event or entity. I like to keep everything in 1 place.
 
 
-## Find me online
+### Find me online
 
  - GitHub [kris-nova](https://github.com/kris-nova) 
  - Twitter [@krisnova](https://twitter.com/krisnova) 
  - LinkedIn [kris-nova](https://linkedin.com/in/kris-nova) 
+ - Twitch [kris-nova](https://twitch.tv/kris-nova)
  
-## Author
+### Author
 
  - [Cloud Native Infrastructure](http://cnibook.info)
 
-## Request for me to speak at your event
-
-Open up a github issue in this repository 
-
-## Videos
-
-#### CNCF - Meet the Ambassadors 
+### Media
 
 [![IMAGE ALT TEXT HERE](/img/cncf-a.png)](https://www.youtube.com/watch?v=wCTFl4JRoYE)
 
