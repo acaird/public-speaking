@@ -1,6 +1,6 @@
 ---
-name: empty
-about: Don't know where to put this
+name: Unknown
+about: If you don't know where to put this
 labels: empty
 
 ---

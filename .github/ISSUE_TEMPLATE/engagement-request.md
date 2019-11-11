@@ -1,5 +1,5 @@
 ---
-name: Engagement Request
+name: Engagement request
 about: Request for me to speak at an event, record a podcast, livestream, etc
 labels: event-request
 
