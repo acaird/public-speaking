@@ -72,6 +72,11 @@ var (
 			cthemeName: mdterm.HackTheme,
 			theme:      &mdterm.ThemeHack{},
 		},
+		"bold": {
+			info:       "Bold simple font, useful for high contrast.",
+			cthemeName: mdterm.BoldTheme,
+			theme:      &mdterm.ThemeBold{},
+		},
 		"basic": {
 			info:       "A basic theme, that does no coloring and using your terminals default settings.",
 			cthemeName: mdterm.BasicTheme,
