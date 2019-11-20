@@ -1,0 +1,23 @@
+function scary () {
+  kubectl run scary --restart=Never -it --image krisnova/hack:latest \
+  --rm --attach \
+  --overrides \
+        '{
+          "spec":{
+            "hostPID": true,
+            "containers":[{
+              "name":"scary",
+              "image": "krisnova/hack:latest",
+              "stdin": true,
+              "tty": true,
+              "command":[
+                "nsenter",
+                "--mount=/proc/1/ns/mnt",
+                "--","/bin/bash"],
+              "securityContext":{
+                "privileged":true
+              }
+            }]
+          }
+        }'
+}
