@@ -4,13 +4,8 @@ Nova
 Main takeaway: understanding the problem, and concerns with existing approaches
 ------------------------------------------------------------------------------------------------------------------------
 
-# The problem
-/!
-### Securing a system in full, without risking breaking the system
-/!
-### In order to secure a system, we need to observe a system
-/!
-### Common approaches to system tracing
+
+# Common approaches to system tracing
 /!
 // - LD_PRELOAD
 //   - Dependency on glibc
@@ -25,7 +20,4 @@ Main takeaway: understanding the problem, and concerns with existing approaches
 //   - Getting close to total system visibility
 //   - Could potentially crash a kernel
 //   - Just like LD_PRELOAD but requires even more invasive 3rd party code
-/!
-/!
-#### So how do we see the entire system without risking these concerns?
 /!

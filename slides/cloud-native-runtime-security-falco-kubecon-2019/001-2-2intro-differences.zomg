@@ -2,21 +2,13 @@
 Nova
 
 
-Main Takeaway: Who are we, and why you should listen to us. Establishing credibility.
+History
 ------------------------------------------------------------------------------------------------------------------------
 
-
-# Cloud Native Runtime Security with Falco
+# The history of Falco
 /!
-### Kris Nova, Sysdig
+### Created as engine to parse libscap and libsinsp
 /!
-// Author
-// Maintainer
-// Hacker
+### Donated to CNCF by Sysdig (the company) in October 2018
 /!
-### Runtime Security
-/!
-// Anomaly detection
-// Forensics
-// Stability
-/!
+### C++
